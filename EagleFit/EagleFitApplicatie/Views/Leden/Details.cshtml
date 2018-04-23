@@ -1,0 +1,165 @@
+﻿@model EL.ViewModels.LidDetailsVM
+
+<div>
+    <h4>Lid met lidnummer @Model.Lid.Persoon.PersoonsId</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.TelefoonNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.TelefoonNummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Geslacht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Geslacht)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Email)
+        </dd>
+
+    </dl>
+    <hr />
+
+    <h4>Adres van Lid</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Adres.Straat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Adres.Straat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Adres.Huisnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Adres.Huisnummer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Adres.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Adres.Postcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Adres.Gemeente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Adres.Gemeente)
+        </dd>
+    </dl>
+    <hr />
+
+    <h4>Abonnementsgegevens</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Abonnement.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Abonnement.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Abonnement.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Abonnement.Omschrijving)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Abonnement.PrijsPerMaand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Abonnement.PrijsPerMaand)
+        </dd>
+    </dl>
+    <hr />
+
+    <h4>Club</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Club.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Club.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Club.TelefoonNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Club.TelefoonNummer)
+        </dd>
+    </dl>
+    <hr />
+    
+    <h4>Adres van Club</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.ClubAdres.Straat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.ClubAdres.Straat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.ClubAdres.Huisnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.ClubAdres.Huisnummer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.ClubAdres.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.ClubAdres.Postcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.ClubAdres.Gemeente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.ClubAdres.Gemeente)
+        </dd>
+
+    </dl>
+</div>
+@if (User.IsInRole("Onthaalmedewerker") || User.IsInRole("Technische Medewerker"))
+{
+    <p>
+        @Html.ActionLink("Wijzigen", "Edit", new { id = Model.Lid.LidNummer }) |
+        @Html.ActionLink("Terug naar alle leden", "Index")
+        @Html.ActionLink("Verwijderen", "LidDeactiveren", new { id = Model.Lid.LidNummer })
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Startpagina", "Index", "Home", null, null)
+    </p>
+}
+

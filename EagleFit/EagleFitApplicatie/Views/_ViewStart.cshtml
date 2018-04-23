@@ -1,0 +1,14 @@
+﻿@{
+    if (User.IsInRole("Lid"))
+    {
+        Layout = "~/Views/Shared/_LedenLayout.cshtml";
+    }
+    else if (User.IsInRole("Onthaalmedewerker") || User.IsInRole("HR") || User.IsInRole("Trainer") || User.IsInRole("Technische Medewerker") || User.IsInRole("Aankoop Medewerker") || User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_MedewerkersLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_PubliekeLayout.cshtml";
+    }
+}

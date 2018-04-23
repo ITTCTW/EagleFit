@@ -1,0 +1,66 @@
+﻿@model IEnumerable<EL.Models.Betaling>
+
+<h2>Betalingen</h2>
+
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(betaling => betaling.Datum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(betaling => betaling.Bedrag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(betaling => betaling.Omschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(betaling => betaling.Betaald)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(betaling => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(betaling => item.Bedrag)
+                </td>
+                <td>
+                    @Html.DisplayFor(betaling => item.Omschrijving)
+                </td>
+                <td>
+                    @Html.DisplayFor(betaling => item.Betaald)
+                </td>
+                @if (item.Betaald == false)
+                {
+                    <td>
+                        <form action="BetalingenPerLid/" method="post">
+                            @Html.HiddenFor(betaling => item.BetalingsId)
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+                                    data-amount="999"
+                                    data-name="Eagle Fit"
+                                    data-currency="EUR"
+                                    data-image="/Images/iron-eagle.jpg"
+                                    data-locale="auto">
+                            </script>
+                        </form>
+                    </td>
+                }
+                
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p>Er zijn geen betalingen gevonden</p>
+}
+
+

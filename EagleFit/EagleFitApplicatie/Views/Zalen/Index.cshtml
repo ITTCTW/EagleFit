@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EL.Models.Zaal>
+
+<h2>Alle zalen</h2>
+
+<p>
+    @Html.ActionLink("Nieuwe zaal aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(zaal => zaal.Club.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(zaal => zaal.Zaalnaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(zaal => zaal.GrooteInVierkanteMeter)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(zaal => item.Club.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(zaal => item.Zaalnaam)
+        </td>
+        <td>
+            @Html.DisplayFor(zaal => item.GrooteInVierkanteMeter)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id=item.ZaalId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ZaalId }) |
+            @Html.ActionLink("Verwijderen", "ZaalDeactiveren", new { id=item.ZaalId })
+        </td>
+    </tr>
+}
+
+</table>

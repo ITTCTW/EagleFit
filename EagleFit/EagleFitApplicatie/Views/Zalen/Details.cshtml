@@ -1,0 +1,37 @@
+﻿@model EL.Models.Zaal
+
+<div>
+    <h4>Zaal @Model.Zaalnaam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(zaal => zaal.Club.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(zaal => zaal.Club.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(zaal => zaal.Zaalnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(zaal => zaal.Zaalnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(zaal => zaal.GrooteInVierkanteMeter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(zaal => zaal.GrooteInVierkanteMeter)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "Edit", new { id = Model.ZaalId }) |
+    @Html.ActionLink("Terug naar alle zalen", "Index") |
+    @Html.ActionLink("Verwijderen", "ZaalDeactiveren", new { id = Model.ZaalId })
+</p>

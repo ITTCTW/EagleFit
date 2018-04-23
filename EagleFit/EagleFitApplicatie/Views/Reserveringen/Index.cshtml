@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EL.Models.Reservering>
+
+<h2>Alle reserveringen</h2>
+
+<p>
+    @Html.ActionLink("Nieuwe reservering", "Create") |
+    @Html.ActionLink("Zalen bekijken", "Index", "Zalen", null, null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(reservering => reservering.Zaal.Zaalnaam)
+        </th>
+        <th>
+            @Html.DisplayName("Medewerker")
+        </th>
+        <th>
+            @Html.DisplayNameFor(reservering => reservering.Reserveringsdatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(reservering => reservering.Reserveringsuur)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(reservering => item.Zaal.Zaalnaam)
+        </td>
+        <td>
+            @Html.DisplayFor(reservering => item.Medewerker.Persoon.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(reservering => item.Reserveringsdatum)
+        </td>
+        <td>
+            @Html.DisplayFor(reservering => item.Reserveringsuur)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id=item.ReserveringsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReserveringsId }) |
+            @Html.ActionLink("Verwijderen", "ReserveringDeactiveren", new { id=item.ReserveringsId })
+        </td>
+    </tr>
+}
+
+</table>
+
+

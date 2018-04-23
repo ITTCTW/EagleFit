@@ -1,0 +1,97 @@
+﻿@model EL.ViewModels.ClubWeergevenVM
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Club @Model.Club.Naam</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(viewModel => viewModel.Club.ClubId)
+        @Html.HiddenFor(viewModel => viewModel.Club.AdresId)
+        @Html.HiddenFor(viewModel => viewModel.Club.Kalender)
+        @Html.HiddenFor(viewModel => viewModel.Adres.AdresId)
+        @Html.HiddenFor(viewModel => viewModel.Club.ClubId)
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Club.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Club.Naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Club.Naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Club.TelefoonNummer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Club.TelefoonNummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Club.TelefoonNummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Club.Kalender, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                <input type="file" name="file" value="" />
+                @Html.ValidationMessageFor(viewModel => viewModel.Club.Kalender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Adres.Straat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Adres.Straat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Adres.Straat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Adres.Huisnummer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Adres.Huisnummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Adres.Huisnummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Adres.Postcode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Adres.Postcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Adres.Postcode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Adres.Gemeente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Adres.Gemeente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Adres.Gemeente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Wijzigen" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Terug naar alle clubs", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

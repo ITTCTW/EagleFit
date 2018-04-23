@@ -1,0 +1,54 @@
+﻿@model EL.ViewModels.ZaalAanmakenVM
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Zaal</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Zaal.Zaalnaam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Zaal.Zaalnaam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Zaal.Zaalnaam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Zaal.GrooteInVierkanteMeter, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.Zaal.GrooteInVierkanteMeter, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.Zaal.GrooteInVierkanteMeter, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.Zaal.Club.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(viewModel => viewModel.Zaal.ClubId, new SelectList(Model.AlleClubs, "ClubId", "Naam"))
+                @Html.ValidationMessageFor(viewModel => viewModel.Zaal.ClubId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Toevoegen" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Terug naar alle zalen", "Index")
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

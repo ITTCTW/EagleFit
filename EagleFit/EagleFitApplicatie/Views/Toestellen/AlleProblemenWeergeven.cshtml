@@ -1,0 +1,35 @@
+﻿@model EL.ViewModels.ToestelProbleemVM
+
+<h2>Problemen @Model.Toestel.Naam</h2>
+
+<p>
+    @Html.ActionLink("Nieuw probleem aanmaken", "ProbleemToevoegen", new { toestelId = Model.Toestel.ToestelId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(viewModel => viewModel.probleem.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(viewModel => viewModel.probleem.Omschrijving)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.ProblemenPerToestel) {
+    <tr>
+        <td>
+            @Html.DisplayFor(viewModel => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(viewModel => item.Omschrijving)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "ProbleemWijzigen", new { probleemId=item.ProbleemId, toestelId = Model.Toestel.ToestelId }) |
+            @Html.ActionLink("Details", "ProbleemWeergeven", new { probleemId=item.ProbleemId, toestelId = Model.Toestel.ToestelId }) |
+            @Html.ActionLink("Terug naar alle toestellen", "Index")
+        </td>
+    </tr>
+}
+
+</table>

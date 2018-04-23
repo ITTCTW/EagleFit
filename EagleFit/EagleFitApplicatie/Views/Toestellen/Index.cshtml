@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EL.Models.Toestel>
+
+<h2>Alle toestellen</h2>
+
+    @if (User.IsInRole("Aankoop Medewerker"))
+    {
+        <p>
+            @Html.ActionLink("Nieuw toestel aanmaken", "Create")
+        </p>
+    }        
+        <table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(toestel => toestel.Naam)
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(toestel => item.Naam)
+                </td>
+
+
+                @if (User.IsInRole("Aankoop Medewerker"))
+                {
+                    <td>
+                        @Html.ActionLink("Wijzigen", "Edit", new { id = item.ToestelId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ToestelId }) |
+                        @Html.ActionLink("Verwijderen", "ToestelDeactiveren", new { id = item.ToestelId })
+                    </td>
+                }
+                else if (User.IsInRole("Onthaalmedewerker"))
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ToestelId })
+                    </td>
+                }
+                else if (User.IsInRole("Technische Medewerker"))
+                {
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.ToestelId }) |
+                        @Html.ActionLink("Problemen", "AlleProblemenWeergeven", new { id = item.ToestelId })
+                    </td>
+                }
+
+            </tr>
+        }
+    }
+    
+
+</table>
+
+
+
+
+
+
+
+
+

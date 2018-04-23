@@ -1,0 +1,41 @@
+﻿@model EL.ViewModels.LidMetAbonnementenVM
+
+<h2>Wijzig Abonnementsgegevens van @Model.Lid.Persoon.Naam</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Persoon</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(viewModel => viewModel.Lid.LidNummer)
+
+    <div class="form-group">
+        @Html.Label("Abonnement", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(viewModel => viewModel.Lid.AbonnementId, new SelectList(Model.AlleAbonnementen, "AbonnementId", "Naam"))
+            @Html.ValidationMessageFor(viewModel => viewModel.Lid.AbonnementId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Wijzigen" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+}
+
+<div>
+    @Html.ActionLink("Terug naar de startpagina", "Index", "Home")
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

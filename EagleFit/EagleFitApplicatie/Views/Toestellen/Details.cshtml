@@ -1,0 +1,65 @@
+﻿@model EL.Models.Toestel
+
+<h2>Details @Model.Naam</h2>
+
+<div>
+    <h4>Toestel @Model.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(toestel => toestel.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(toestel => toestel.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(toestel => toestel.Kuisproduct)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(toestel => toestel.Kuisproduct)
+        </dd>
+        @{
+            if (User.IsInRole("Aankoop Medewerker") || User.IsInRole("Technische Medewerker"))
+            {
+                <dt>
+                    @Html.DisplayNameFor(toestel => toestel.AankoopDatum)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(toestel => toestel.AankoopDatum)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(toestel => toestel.Handleiding)
+                </dt>
+
+                <dd>
+                    @Html.ActionLink($"{Model.Naam} Handleiding", "DownloadHandleiding", new { id = Model.ToestelId })
+                </dd>
+            }
+        }
+    </dl>
+</div>
+
+    @{
+        if (User.IsInRole("Aankoop Medewerker"))
+        {
+            <p>
+                @Html.ActionLink("Wijzigen", "Edit", new { id = Model.ToestelId }) 
+                @Html.ActionLink("Delete", "ToestelDeactiveren", new { id = Model.ToestelId }) |
+                @Html.ActionLink("Terug naar alle toestellen", "Index")
+            </p>
+        }
+        else if (User.IsInRole("Technische Medewerker"))
+        {
+            <p>
+                @Html.ActionLink("Problemen", "AlleProblemenWeergeven", new { id = Model.ToestelId })
+                @Html.ActionLink("Terug naar alle toestellen", "Index")
+            </p>            
+        }
+        <hr />
+    }
+
+

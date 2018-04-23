@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EL.Models.Lid>
+
+<h2>Alle leden</h2>
+
+<p>
+    @Html.ActionLink("Nieuw lid aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(lid => lid.Persoon.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(lid => lid.Persoon.TelefoonNummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(lid => lid.Persoon.Geslacht)
+        </th>
+        <th>
+            @Html.DisplayNameFor(lid => lid.Persoon.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(lid => lid.Persoon.Adres.Gemeente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(lid => lid.Club.Naam)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(lid => item.Persoon.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(lid => item.Persoon.TelefoonNummer)
+        </td>
+        <td>
+            @Html.DisplayFor(lid => item.Persoon.Geslacht)
+        </td>
+        <td>
+            @Html.DisplayFor(lid => item.Persoon.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(lid => item.Persoon.Adres.Gemeente)
+        </td>
+        <td>
+            @Html.DisplayFor(lid => item.Club.Naam)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id=item.LidNummer }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LidNummer }) |
+            @Html.ActionLink("Verwijderen", "LidDeactiveren", new { id=item.LidNummer })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,42 @@
+﻿@model EL.Models.Reservering
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reservering op @Model.Reserveringsdatum in zaal @Model.Zaal.Zaalnaam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(reservering => reservering.Zaal.Zaalnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Zaal.Zaalnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Medewerker")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Medewerker.Persoon.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(reservering => reservering.Reserveringsdatum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Reserveringsdatum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(reservering => reservering.Reserveringsuur)
+        </dt>
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Reserveringsuur)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "Edit", new { id = Model.ReserveringsId }) |
+    @Html.ActionLink("Verwijderen", "ReserveringDeactiveren", new { id = Model.ReserveringsId }) |
+    @Html.ActionLink("Terug naar alle reserveringen", "Index")
+</p>

@@ -1,0 +1,30 @@
+﻿@model EL.ViewModels.ToestelProbleemVM
+
+<h2>@Model.Toestel.Naam - @Model.probleem.Naam</h2>
+
+<div>
+    <h4>ToestelProbleem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.probleem.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.probleem.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.probleem.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.probleem.Omschrijving)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "ProbleemWijzigen", new { probleemId = Model.probleem.ProbleemId, toestelId = Model.Toestel.ToestelId }) |
+    @Html.ActionLink("Terug naar alle problemen", "AlleProblemenWeergeven", new { id = Model.Toestel.ToestelId })
+</p>

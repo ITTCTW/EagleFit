@@ -1,0 +1,51 @@
+﻿@model EL.Models.Groepsles
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Groepsles</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(groepsles => groepsles.GroepslesId)
+
+        <div class="form-group">
+            @Html.LabelFor(groepsles => groepsles.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(groepsles => groepsles.Naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(groepsles => groepsles.Naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(groepsles => groepsles.Beschrijving, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(groepsles => groepsles.Beschrijving, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(groepsles => groepsles.Beschrijving, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Wijzigen" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Terug naar alle groepslessen", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

@@ -1,0 +1,46 @@
+﻿@model EL.Models.Groepsles
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Groepsles @Model.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(groepsles => groepsles.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(groepsles => groepsles.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(groepsles => groepsles.Beschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(groepsles => groepsles.Beschrijving)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(groepsles => groepsles.GroepslesId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle groepslessen", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

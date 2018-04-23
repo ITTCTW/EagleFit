@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EL.Models.Ticket>
+
+<h2>Alle tickets</h2>
+
+<p>
+    @Html.ActionLink("Nieuw ticket aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(ticket => ticket.Titel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(ticket => ticket.Klacht)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(ticket => item.Titel)
+        </td>
+        <td>
+            @Html.DisplayFor(ticket => item.Klacht)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id=item.TicketId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TicketId }) |
+            @Html.ActionLink("Verwijderen", "TicketDeactiveren", new { id = item.TicketId })
+        </td>
+    </tr>
+}
+
+</table>

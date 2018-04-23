@@ -1,0 +1,36 @@
+﻿@model EL.ViewModels.AbonnementVanLidWeergevenVM
+
+<h2>Abonnementsgegevens @Model.Lid.Persoon.Naam</h2>
+
+<div>
+    <h4>Abonnement</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Abonnement.Naam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Abonnement.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Abonnement.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Abonnement.Omschrijving)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Abonnement.PrijsPerMaand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Abonnement.PrijsPerMaand)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzig abonnement", "WijzigAbonnementsgegevens", new { id = Model.Lid.LidNummer }) |
+    @Html.ActionLink("Terug naar de startpagina", "Index", "Home")
+</p>

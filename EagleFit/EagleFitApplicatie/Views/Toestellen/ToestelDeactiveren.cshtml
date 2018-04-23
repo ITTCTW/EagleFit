@@ -1,0 +1,52 @@
+﻿@model EL.Models.Toestel
+
+<h3>Ben je zeker dat je dit wilt verwijderen?</h3>
+<div>
+    <h4>Toestel @Model.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(toestel => toestel.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(toestel => toestel.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(toestel => toestel.AankoopDatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(toestel => toestel.AankoopDatum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(toestel => toestel.Kuisproducten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(toestel => toestel.Kuisproducten)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(toestel => toestel.ToestelId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle toestellen", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

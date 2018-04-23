@@ -1,0 +1,60 @@
+﻿@model EL.Models.Reservering
+
+<h3>Ben je zeker dat je dit wilt verwijderen?</h3>
+<div>
+    <h4>Reservering verwijderen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(reservering => reservering.Medewerker.MedewerkersStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Medewerker.MedewerkersStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(reservering => reservering.Zaal.Zaalnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Zaal.Zaalnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(reservering => reservering.Reserveringsdatum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Reserveringsdatum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(reservering => reservering.Actief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(reservering => reservering.Actief)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(reservering => reservering.ReserveringsId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle reserveringen", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

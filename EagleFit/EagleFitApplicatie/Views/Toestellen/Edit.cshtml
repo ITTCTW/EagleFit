@@ -1,0 +1,74 @@
+﻿@model EL.Models.Toestel
+
+<form action="" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Toestel @Model.Naam</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(toestel => toestel.ToestelId)
+
+        <div class="form-group">
+            @Html.LabelFor(toestel => toestel.Naam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(toestel => toestel.Naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(toestel => toestel.Naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(toestel => toestel.AankoopDatum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(toestel => toestel.AankoopDatum, new { htmlAttributes = new { @class = "form-control", @id = "aankoopdatum" } })
+                @Html.ValidationMessageFor(toestel => toestel.AankoopDatum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(toestel => toestel.Handleiding, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="file" value="" />
+                @Html.ValidationMessageFor(toestel => toestel.Handleiding, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(toestel => toestel.Kuisproduct, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(viewModel => viewModel.Kuisproduct, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(toestel => toestel.Kuisproduct, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Wijzigen" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+    <div>
+        @Html.ActionLink("Terug naar alle toestellen", "Index")
+    </div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        $(function () {
+            $('#aankoopdatum').datetimepicker({
+                format: "D/MM/YYYY"
+            });
+        });
+    </script>
+}
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

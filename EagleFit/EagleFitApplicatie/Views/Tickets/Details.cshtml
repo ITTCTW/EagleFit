@@ -1,0 +1,29 @@
+﻿@model EL.Models.Ticket
+
+<div>
+    <h4>Ticket @Model.Titel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(ticket => ticket.Titel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(ticket => ticket.Titel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(ticket => ticket.Klacht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(ticket => ticket.Klacht)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "Edit", new { id = Model.TicketId }) |
+    @Html.ActionLink("Terug naar alle tickets", "Index") |
+    @Html.ActionLink("Verwijderen", "TicketDeactiveren", new { id = Model.TicketId })
+</p>

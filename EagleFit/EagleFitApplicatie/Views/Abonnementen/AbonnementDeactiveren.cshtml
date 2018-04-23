@@ -1,0 +1,52 @@
+﻿@model EL.Models.Abonnement
+
+<h3>Ben je zeker dat je dit wilt verwijderen?</h3>
+<div>
+    <h4>Abonnement @Model.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(abonnement => abonnement.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(abonnement => abonnement.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(abonnement => abonnement.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(abonnement => abonnement.Omschrijving)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(abonnement => abonnement.PrijsPerMaand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(abonnement => abonnement.PrijsPerMaand)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(abonnement => abonnement.AbonnementId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle abonnementen", "Index")
+        </div>
+    }
+</div>
+
+@if(ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

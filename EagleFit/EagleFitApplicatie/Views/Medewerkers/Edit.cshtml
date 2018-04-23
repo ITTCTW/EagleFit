@@ -1,0 +1,131 @@
+﻿@model EL.Models.Medewerker
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(medewerker => medewerker.MedewerkersId)
+    @Html.HiddenFor(medewerker => medewerker.Persoon.PersoonsId)
+    @Html.HiddenFor(medewerker => medewerker.Persoon.AdresId)
+
+    <div class="form-horizontal">
+        <h4>Medewerker</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(medewerker => medewerker.MedewerkersId)
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Voornaam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Voornaam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Voornaam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Familienaam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Familienaam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Familienaam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.TelefoonNummer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.TelefoonNummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.TelefoonNummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Geslacht, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Geslacht, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Geslacht, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Adres.Straat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Adres.Straat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Adres.Straat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Adres.Huisnummer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Adres.Huisnummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Adres.Huisnummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Adres.Postcode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Adres.Postcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Adres.Postcode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Persoon.Adres.Gemeente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Persoon.Adres.Gemeente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Persoon.Adres.Gemeente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.Salaris, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(medewerker => medewerker.Salaris, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(medewerker => medewerker.Salaris, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(medewerker => medewerker.MedewerkersStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+            @Html.DropDownListFor(medewerker => medewerker.MedewerkersStatus, new List<SelectListItem>
+           {
+               new SelectListItem { Text = "Onthaalmedewerker", Value = "Onthaalmedewerker" },
+               new SelectListItem { Text = "HR", Value = "HR" },
+               new SelectListItem { Text = "Technische Medewerker", Value = "Technische Medewerker" },
+               new SelectListItem { Text = "Trainer", Value = "Trainer" },
+               new SelectListItem { Text = "Aankoop Medewerker", Value = "Aankoop Medewerker" },
+               new SelectListItem { Text = "Admin", Value = "Admin" }
+           })
+                    @Html.ValidationMessageFor(medewerker => medewerker.MedewerkersStatus, "", new { @class = "text-danger" })
+                </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Wijzigen" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Terug naar alle medewerkers", "Index")
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

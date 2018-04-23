@@ -1,0 +1,90 @@
+﻿@model EL.Models.Lid
+
+<h3>Ben je zeker dat je dit wilt verwijderen?</h3>
+<div>
+    <h4>Lid met lidnummer @Model.LidNummer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.Voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.Voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.Familienaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.Familienaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.TelefoonNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.TelefoonNummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.Geslacht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.Geslacht)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.Adres.Straat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.Adres.Straat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.Adres.Huisnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.Adres.Huisnummer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.Adres.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.Adres.Postcode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(lid => lid.Persoon.Adres.Gemeente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(lid => lid.Persoon.Adres.Gemeente)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(lid => lid.LidNummer)
+        @Html.HiddenFor(lid => lid.PersoonId)
+        @Html.HiddenFor(lid => lid.Persoon.AdresId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle leden", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

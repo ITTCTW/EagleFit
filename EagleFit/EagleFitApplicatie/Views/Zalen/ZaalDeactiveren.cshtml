@@ -1,0 +1,51 @@
+﻿@model EL.Models.Zaal
+
+<h3>Ben je zeker dat je deze zaal wilt verwijderen?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Club")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(zaal => zaal.Club.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(zaal => zaal.Zaalnaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(zaal => zaal.Zaalnaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(zaal => zaal.GrooteInVierkanteMeter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(zaal => zaal.GrooteInVierkanteMeter)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(zaal => zaal.ZaalId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle zalen", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

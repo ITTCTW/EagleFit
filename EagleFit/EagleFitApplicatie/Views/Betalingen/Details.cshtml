@@ -1,0 +1,58 @@
+﻿@model EL.ViewModels.BetalingMetLidVM
+
+<div>
+    <h4>Factuurnr @Model.Betaling.BetalingsId van lid met lidnummer @Model.Lid.LidNummer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.LidNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.LidNummer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Lid.Persoon.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Lid.Persoon.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Betaling.Datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Betaling.Datum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Betaling.Bedrag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Betaling.Bedrag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Betaling.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Betaling.Omschrijving)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Betaling.Betaald)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Betaling.Betaald)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "Edit", new { id = Model.Betaling.BetalingsId }) |
+    @Html.ActionLink("Terug naar alle facturen", "Index")
+</p>

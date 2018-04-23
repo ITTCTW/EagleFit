@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EL.Models.Adres>
+
+<h2>Alle Adressen</h2>
+
+<p>
+    @Html.ActionLink("Nieuw adres aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(viewModel => viewModel.Straat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(viewModel => viewModel.Huisnummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(viewModel => viewModel.Postcode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(viewModel => viewModel.Gemeente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(viewModel => viewModel.ClubId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(viewModel => item.Straat)
+        </td>
+        <td>
+            @Html.DisplayFor(viewModel => item.Huisnummer)
+        </td>
+        <td>
+            @Html.DisplayFor(viewModel => item.Postcode)
+        </td>
+        <td>
+            @Html.DisplayFor(viewModel => item.Gemeente)
+        </td>
+        <td>
+            @Html.DisplayFor(viewModel => item.ClubId)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id=item.AdresId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AdresId }) |
+            @Html.ActionLink("Verwijderen", "AdresDeactiveren", new { id=item.AdresId })
+        </td>
+    </tr>
+}
+
+</table>

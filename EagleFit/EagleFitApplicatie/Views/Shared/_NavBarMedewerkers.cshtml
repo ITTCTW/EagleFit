@@ -1,0 +1,21 @@
+﻿<div class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-primary">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @Html.ActionLink("Eagle Fit", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse" id="navbarColor01">
+            <ul class="navbar-nav">
+                <li style="padding-left: 2%;font-size: large; font-weight:bold">@Html.ActionLink("Leden", "Index", "Leden", new { area = "" }, new { @class = "nav-link" })</li>
+                <li style="padding-left: 2%;font-size: large; font-weight:bold">@Html.ActionLink("Medewerkers", "Index", "Medewerkers", new { area = "" }, new { @class = "nav-link" })</li>
+                <li style="padding-left: 2%;font-size: large; font-weight:bold">@Html.ActionLink("Toestellen", "Index", "Toestellen", new { area = "" }, new { @class = "nav-link" })</li>
+                <li style="padding-left: 2%;font-size: large; font-weight:bold">@Html.ActionLink("Ticketservice", "Index", "Tickets", new { area = "" }, new { @class = "nav-link" })</li>
+                <li style="padding-left: 2%;font-size: large; font-weight:bold">@Html.ActionLink("Reserveringen", "Index", "Reserveringen", new { area = "" }, new { @class = "nav-link" })</li>
+                <li style="padding-left: 2%;font-size: large; font-weight:bold">@Html.ActionLink("Admin", "Admin", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

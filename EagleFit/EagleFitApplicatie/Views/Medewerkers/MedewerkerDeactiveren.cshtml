@@ -1,0 +1,61 @@
+﻿@model EL.Models.Medewerker
+
+<h3>Ben je zeker dat je dit wilt verwijderen?</h3>
+<div>
+    <h4>Medewerker @Model.Persoon.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(medewerker => medewerker.Persoon.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(medewerker => medewerker.Persoon.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(medewerker => medewerker.Salaris)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(medewerker => medewerker.Salaris)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(medewerker => medewerker.MedewerkersStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(medewerker => medewerker.MedewerkersStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(medewerker => medewerker.Actief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(medewerker => medewerker.Actief)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(medewerker => medewerker.MedewerkersId)
+        @Html.HiddenFor(medewerker => medewerker.PersoonsId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle medewerkers", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

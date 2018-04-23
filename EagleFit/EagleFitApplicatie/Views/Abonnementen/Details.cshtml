@@ -1,0 +1,37 @@
+﻿@model EL.Models.Abonnement
+
+<div>
+    <h4>Abonnement @Model.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(abonnement => abonnement.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(abonnement => abonnement.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(abonnement => abonnement.Omschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(abonnement => abonnement.Omschrijving)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(abonnement => abonnement.PrijsPerMaand)
+        </dt>
+
+        <dd>
+            € @Html.DisplayFor(abonnement => abonnement.PrijsPerMaand)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "Edit", new { id = Model.AbonnementId }) |
+    @Html.ActionLink("Terug naar alle abonnementen", "Index") |
+    @Html.ActionLink("Verwijderen", "AbonnementDeactiveren", new { id = Model.AbonnementId })
+</p>

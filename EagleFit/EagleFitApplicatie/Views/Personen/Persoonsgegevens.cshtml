@@ -1,0 +1,94 @@
+﻿@model EL.ViewModels.PersoonDetailsVM
+
+<h2>Persoonsgegevens</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.PersoonsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.PersoonsId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Voornaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Voornaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Familienaam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Familienaam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.TelefoonNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.TelefoonNummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Geslacht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Geslacht)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Email)
+        </dd>        
+    </dl>
+    <h4>Adres</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Adres.Straat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Adres.Straat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Adres.Huisnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Adres.Huisnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Adres.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Adres.Postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Persoon.Adres.Gemeente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Persoon.Adres.Gemeente)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "WijzigPersoonsgegevens", new { id = Model.Persoon.PersoonsId }) |
+    @Html.ActionLink("Terug naar de startpagina", "Index", "Home")
+</p>

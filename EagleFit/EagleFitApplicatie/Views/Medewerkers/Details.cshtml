@@ -1,0 +1,125 @@
+﻿@model EL.Models.Medewerker
+
+<div>
+    <h4>Medewerker @Model.Persoon.Naam</h4>
+    <hr />
+    <div>
+        @Html.HiddenFor(medewerker => medewerker.MedewerkersId)
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Voornaam)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Voornaam)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Familienaam)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Familienaam)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.TelefoonNummer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.TelefoonNummer)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Geslacht)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Geslacht)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Email)
+            </dd>
+        </dl>
+    </div>
+    <hr />
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Adres.Straat)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Adres.Straat)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Adres.Huisnummer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Adres.Huisnummer)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Adres.Postcode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Adres.Postcode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Persoon.Adres.Gemeente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Persoon.Adres.Gemeente)
+            </dd>
+        </dl>
+    </div>
+    <hr />
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.Salaris)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.Salaris)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(medewerker => medewerker.MedewerkersStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(medewerker => medewerker.MedewerkersStatus)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+    @if (User.IsInRole("HR") || User.IsInRole("Technische Medewerker"))
+    {
+        <p>
+            @Html.ActionLink("Wijzigen", "Edit", new { id = Model.MedewerkersId }) |
+            @Html.ActionLink("Terug naar alle medewerkers", "Index") |
+            @Html.ActionLink("Verwijderen", "MedewerkerDeactiveren", new { id = Model.MedewerkersId })   
+        </p>
+
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Terug naar alle medewerkers", "Index")
+        </p>        
+    }
+    
+

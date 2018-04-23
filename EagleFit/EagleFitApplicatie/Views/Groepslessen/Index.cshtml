@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EL.Models.Groepsles>
+
+    <h2>Alle groepslessen</h2>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Nieuwe groepsles aanmaken", "Create")
+    </p>
+}
+    
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(groepsles => groepsles.Naam)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(groepsles => item.Naam)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                <td>
+                    @Html.ActionLink("Wijzigen", "Edit", new { id = item.GroepslesId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.GroepslesId }) |
+                    @Html.ActionLink("Verwijderen", "ClubDeactiveren", new { id = item.GroepslesId })
+                </td>
+                }
+                else
+                {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.GroepslesId })
+                </td>
+                }
+            </tr>
+        }
+
+    </table>

@@ -1,0 +1,37 @@
+﻿@model EL.Models.Groepsles
+
+<div>
+    <h4>Groepsles @Model.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(groepsles => groepsles.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(groepsles => groepsles.Naam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(groepsles => groepsles.Beschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(groepsles => groepsles.Beschrijving)
+        </dd>
+
+    </dl>
+</div>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Wijzigen", "Edit", new { id = Model.GroepslesId }) |
+        @Html.ActionLink("Terug naar alle groepslessen", "Index") |
+        @Html.ActionLink("Verwijderen", "delete", new { id = Model.GroepslesId }) |
+    </p>
+}
+else
+{
+    <p>
+        @Html.ActionLink("Terug naar alle groepslessen", "Index")
+    </p>
+}

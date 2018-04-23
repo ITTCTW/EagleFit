@@ -1,0 +1,76 @@
+﻿@model EL.ViewModels.ClubWeergevenVM
+
+<h3>Ben je zeker dat je dit wilt verwijderen?</h3>
+<div>
+    <h4>Club @Model.Club.Naam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Club.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Club.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Club.TelefoonNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Club.TelefoonNummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Adres.Straat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Adres.Straat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Adres.Huisnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Adres.Huisnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Adres.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Adres.Postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(viewModel => viewModel.Adres.Gemeente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(viewModel => viewModel.Adres.Gemeente)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Club.ClubId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle clubs", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

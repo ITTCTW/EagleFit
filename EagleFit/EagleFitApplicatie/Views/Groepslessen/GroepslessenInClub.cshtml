@@ -1,0 +1,15 @@
+﻿@model EL.ViewModels.ClubsVM
+
+<div>
+    <h2>Groepslessen per club</h2>
+    
+    @using (Html.BeginForm())
+    {
+        @Html.Label("ClubNaam", "Naam club:")
+        <br />
+        @Html.DropDownListFor(viewModel => viewModel.GeselecteerdeClub, new SelectList(Model.Clubs, "ClubId", "Naam"))
+        <br /><br />
+        <input type="submit" name="Submit" value="Vind lessen" />
+    }
+
+</div>

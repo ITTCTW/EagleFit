@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EL.Models.Medewerker>
+
+<p>
+    @Html.ActionLink("Nieuwe medewerker aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(medewerker => medewerker.Persoon.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(medewerker => medewerker.Persoon.Adres.Gemeente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(medewerker => medewerker.Salaris)
+        </th>
+        <th>
+            @Html.DisplayNameFor(medewerker => medewerker.MedewerkersStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(medewerker => item.Persoon.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(medewerker => item.Persoon.Adres.Gemeente)
+        </td>
+        <td>
+            @Html.DisplayFor(medewerker => item.Salaris)
+        </td>
+        <td>
+            @Html.DisplayFor(medewerker => item.MedewerkersStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id=item.MedewerkersId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MedewerkersId }) |
+            @Html.ActionLink("Verwijderen", "MedewerkerDeactiveren", new { id = item.MedewerkersId })
+        </td>
+    </tr>
+}
+
+</table>

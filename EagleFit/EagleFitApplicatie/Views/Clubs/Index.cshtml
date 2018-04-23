@@ -1,0 +1,53 @@
+﻿@model IEnumerable<EL.Models.Club>
+
+<h2>Alle clubs</h2>
+@{
+    if (User.IsInRole("Onthaalmedewerker"))
+        {
+        <p>
+            @Html.ActionLink("Nieuwe club aanmaken", "Create")
+        </p>
+        }
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(club => club.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(club => club.TelefoonNummer)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(club => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(club => item.TelefoonNummer)
+        </td>
+        @{
+            if (User.IsInRole("Onthaalmedewerker"))
+            {
+                <td>
+                    @Html.ActionLink("Wijzigen", "Edit", new { id = item.ClubId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ClubId }) |
+                    @Html.ActionLink("Verwijderen", "ClubDeactiveren", new { id = item.ClubId })
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ClubId })
+                </td>
+            }
+        }
+
+    </tr>
+            }
+
+</table>

@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            @if (User.IsInRole("Lid"))
+            {
+                <li class="dropdown" data-lid-menu>
+                    <a href="#" title="Manage">
+                        @User.Identity.GetUserName()
+                        <span class="glyphicon glyphicon-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        @*Place our menu items*@
+                        <li><a href="/Personen/Persoonsgegevens">&nbsp;&nbsp;Persoonsgegevens</a></li>
+                        <li class="divider" />
+                        <li><a href="/Personen/Abonnementsgegevens">&nbsp;&nbsp;Abonnementsgegevens</a></li>
+                        <li class="divider" />
+                        <li><a href="/Personen/BetalingenPerLid">&nbsp;&nbsp;Betalingen</a></li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li>
+                    @Html.ActionLink( User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+            }
+
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", style = "padding-left: 5%;font-size: large; font-weight:bold" })</li>
+        <li>
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "padding-left: 5%;font-size: large; font-weight:bold" })
+            
+        </li>
+        <li>
+            @Html.ActionLink("Password?", "ForgotPassword", "Account")
+        </li>
+    </ul>
+}

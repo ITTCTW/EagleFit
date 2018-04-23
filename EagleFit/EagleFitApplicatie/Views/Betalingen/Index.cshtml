@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EL.Models.Betaling>
+
+<h2>Alle betalingen</h2>
+
+<p>
+    @Html.ActionLink("Nieuwe factuur aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(betaling => betaling.Lidnummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(betaling => betaling.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(betaling => betaling.Bedrag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(betaling => betaling.Omschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(betaling => betaling.Betaald)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(betaling => item.Lidnummer)
+        </td>
+        <td>
+            @Html.DisplayFor(betaling => item.Datum)
+        </td>
+        <td>
+            @Html.DisplayFor(betaling => item.Bedrag)
+        </td>
+        <td>
+            @Html.DisplayFor(betaling => item.Omschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(betaling => item.Betaald)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id=item.BetalingsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BetalingsId })
+        </td>
+    </tr>
+}
+
+</table>

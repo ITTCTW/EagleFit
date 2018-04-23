@@ -1,0 +1,134 @@
+﻿@model EL.ViewModels.LedenAanmakenVM
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Lid met lidnummer @Model.MyLid.LidNummer</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(viewModel => viewModel.MyLid.LidNummer)
+        @Html.HiddenFor(viewModel => viewModel.MyLid.PersoonId)
+        @Html.HiddenFor(viewModel => viewModel.MyLid.Persoon.AdresId)
+        @Html.HiddenFor(viewModel => viewModel.MyLid.AbonnementId)
+        @Html.HiddenFor(viewModel => viewModel.MyLid.Persoon.PersoonsId)
+        @Html.HiddenFor(viewModel => viewModel.MyLid.Persoon.Adres.AdresId)
+        @Html.HiddenFor(viewModel => viewModel.MyLid.Persoon.Adres.ClubId)
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Voornaam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.Voornaam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Voornaam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Familienaam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.Familienaam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Familienaam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.TelefoonNummer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.TelefoonNummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.TelefoonNummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Geslacht, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(viewModel => viewModel.MyLid.Persoon.Geslacht, new List<SelectListItem>
+           {
+               new SelectListItem { Text = "Man", Value = "Man" },
+               new SelectListItem { Text = "Vrouw", Value = "Vrouw" }
+           })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Geslacht, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.TeWijzigenAbonnementId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(viewModel => viewModel.MyLid.TeWijzigenAbonnementId, new SelectList(Model.Abonnementen, "AbonnementId", "Naam"))
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.TeWijzigenAbonnementId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.ClubId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(viewModel => viewModel.MyLid.ClubId, new SelectList(Model.Clubs, "ClubId", "Naam"))
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.ClubId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Adres.Straat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.Adres.Straat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Adres.Straat, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Adres.Huisnummer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.Adres.Huisnummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Adres.Huisnummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Adres.Postcode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.Adres.Postcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Adres.Postcode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(viewModel => viewModel.MyLid.Persoon.Adres.Gemeente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(viewModel => viewModel.MyLid.Persoon.Adres.Gemeente, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(viewModel => viewModel.MyLid.Persoon.Adres.Gemeente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Wijzigen" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Terug naar alle leden", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}

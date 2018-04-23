@@ -1,0 +1,68 @@
+﻿@model EL.Models.Adres
+
+<h3>Ben je zeker dat je dit wilt verwijderen?</h3>
+<div>
+    <h4>Adres</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(adres => adres.Straat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(adres => adres.Straat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(adres => adres.Huisnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(adres => adres.Huisnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(adres => adres.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(adres => adres.Postcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(adres => adres.Gemeente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(adres => adres.Gemeente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(adres => adres.ClubId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(adres => adres.ClubId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(adres => adres.AdresId)
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijderen" class="btn btn-default" /> |
+            @Html.ActionLink("Terug naar alle adressen", "Index")
+        </div>
+    }
+</div>
+
+@if (ViewBag.Message == "Fout")
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Er is iets misgelopen, probeer opnieuw!")
+        }
+    </script>
+}
